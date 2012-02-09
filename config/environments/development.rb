@@ -27,4 +27,7 @@ SampleApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Trying to turn on log
+  config.log_level = :debug
 end
