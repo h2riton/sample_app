@@ -67,6 +67,13 @@ describe "LayoutLinks" do
       response.should have_selector("a", :href => user_path(@user),
                                          :content => "Profile")
     end
+    
+    it "should have an index link" do
+      visit root_path
+      response.should have_selector("a", :href => '/users',
+                                         :content => "Users")
+    end
+
   end
   
 end
