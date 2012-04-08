@@ -146,4 +146,15 @@ describe User do
     end
   end
   
+  describe "player associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+    end
+
+    it "should have a player attribute" do
+      @user.should respond_to(:player)
+    end
+  end
+  
 end
