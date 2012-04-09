@@ -11,4 +11,15 @@
       <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
+  <tr>
+    <td>
+      <% if @user.player.nickname.nil? %>
+        <%= link_to "Getting Started", player_path%>
+      <% else %>
+        <h1>
+          <%= @user.player.nickname %>
+        </h1>
+      <% end%>
+    </td>
+  </tr>
 </table>

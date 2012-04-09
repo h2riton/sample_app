@@ -6,6 +6,11 @@ Factory.define :user do |user|
   user.password_confirmation "pwgeneration"
 end
 
+Factory.define :player do |player|
+  player.nickname "Riton"
+  player.association :user
+end
+
 Factory.sequence :name do |n|
   "Person #{n}"
 end

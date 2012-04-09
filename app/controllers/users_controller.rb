@@ -12,10 +12,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.name
+    @player = @user.create_player
   end
   
   def new
+    #passing a User as variable for the form
     @user = User.new
+    #Setting custom title for the page
     @title = "Sign up"
   end
   
