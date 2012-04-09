@@ -11,6 +11,11 @@ Factory.define :player do |player|
   player.association :user
 end
 
+Factory.define :tournament do |tournament|
+  tournament.title "Super Tournoi"
+  tournament.association :player
+end
+
 Factory.sequence :name do |n|
   "Person #{n}"
 end

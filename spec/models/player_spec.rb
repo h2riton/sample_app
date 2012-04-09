@@ -42,4 +42,21 @@ describe Player do
     end
   end  
   
+  describe "tournament associations" do
+
+    before(:each) do
+      @player = @user.create_player(@attr)
+      @tm1 = Factory(:tournament, :player => @player, :created_at => 1.day.ago)
+      @tm2 = Factory(:tournament, :player => @player, :created_at => 1.hour.ago)
+    end
+
+    it "should have a microposts attribute" do
+      @player.should respond_to(:tournaments)
+    end
+    
+    it "should have the right microposts in the right order" do
+      @player.tournaments.should == [@tm2, @tm1]
+    end
+  end
+  
 end
