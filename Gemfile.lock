@@ -142,8 +142,6 @@ GEM
       win32-api (>= 1.4.5)
       windows-api (>= 0.3.0)
 
-PLATFORMS
-  x86-mingw32
 
 DEPENDENCIES
   annotate
