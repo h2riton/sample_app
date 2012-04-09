@@ -15,7 +15,9 @@ class UsersController < ApplicationController
   end
   
   def new
+    #passing a User as variable for the form
     @user = User.new
+    #Setting custom title for the page
     @title = "Sign up"
   end
   
@@ -60,10 +62,6 @@ class UsersController < ApplicationController
   
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
-    
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
@@ -76,6 +74,5 @@ class UsersController < ApplicationController
     def signed_in_user
       redirect_to(root_path) unless !signed_in?
     end
-    
   
 end

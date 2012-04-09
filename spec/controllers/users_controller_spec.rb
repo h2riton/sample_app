@@ -87,6 +87,13 @@ render_views
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar")
     end
+    
+    it "should show the user's player" do
+      player = Factory(:player, :user => @user)
+      get :show, :id => @user
+      response.should have_selector("h1", :content => @user.player.nickname)
+    end
+    
   end
 
   describe "GET 'new'" do

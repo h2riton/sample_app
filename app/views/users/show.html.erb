@@ -11,4 +11,19 @@
       <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
+  <tr>
+    <td>
+      <% if @user.player.nil? %>
+        <%= link_to "Getting Started", new_player_path %>
+      <% else %>
+        <h1>
+          <%= @user.player.nickname %>
+        </h1>
+        <%= link_to "edit", edit_player_path(@user.player) %>
+        |
+         <%= link_to "delete", @user.player, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{ @user.player.nickname}" %>
+      <% end%>
+    </td>
+  </tr>
 </table>

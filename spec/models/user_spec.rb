@@ -146,4 +146,21 @@ describe User do
     end
   end
   
+  describe "player associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @player = Factory(:player, :user => @user)
+    end
+
+    it "should have a player attribute" do
+      @user.should respond_to(:player)
+    end
+    
+    it "should destroy associated player" do
+      @user.destroy
+      Player.find_by_id(@player.id).should be_nil
+    end
+  end
+  
 end

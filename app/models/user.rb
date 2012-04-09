@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
   
+  has_one :player, :dependent => :destroy
+  
   #name_regex = /\A\w+[a-z]?+\s?+\w+[a-z]?\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
