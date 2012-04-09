@@ -4,7 +4,7 @@ describe Player do
 
   before(:each) do
     @user = Factory(:user)
-    @attr = { :content => "Riton" }
+    @attr = { :nickname => "Riton" }
   end
 
   it "should set a player given valid attribute" do
@@ -26,4 +26,20 @@ describe Player do
       @player.user.should == @user
     end
   end
+  
+  describe "validations" do
+
+    it "should require a user id" do
+      Player.new(@attr).should_not be_valid
+    end
+
+    it "should require nonblank nickname" do
+      @user.create_player(:nickname => "  ").should_not be_valid
+    end
+
+    it "should reject long content" do
+      @user.create_player(:nickname => "a" * 141).should_not be_valid
+    end
+  end  
+  
 end

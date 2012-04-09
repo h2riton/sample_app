@@ -1,2 +1,12 @@
 <h1>Set your player</h1>
 
+<%= form_for(@player) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Register Player" %>
+  </div>
+<% end %>
