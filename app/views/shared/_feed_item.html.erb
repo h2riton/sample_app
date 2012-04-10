@@ -1,0 +1,18 @@
+<tr>
+  <td class="tournament">
+    <span class="player">
+      <%= link_to feed_item.player.nickname, feed_item.player %>
+    </span>
+    <span class="title"><%= feed_item.title %></span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(feed_item.created_at) %> ago.
+    </span>
+  </td>
+  <% if current_user?(feed_item.player.user) %>
+    <td>
+      <%= link_to "delete", feed_item, :method => :delete,
+                                       :confirm => "You sure?",
+                                       :title => feed_item.title %>
+    </td>
+  <% end %>
+</tr>

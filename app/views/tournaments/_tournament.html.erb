@@ -1,0 +1,15 @@
+<tr>
+  <td class="tournaments">
+    <span class="title"><%= tournament.title %></span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(tournament.created_at) %> ago.
+    </span>
+  </td>
+  <% if current_user?(tournament.player.user) %>
+    <td>
+      <%= link_to "delete", tournament, :method => :delete,
+                                       :confirm => "You sure?",
+                                       :title => tournament.title %>
+    </td>
+  <% end %>
+</tr>

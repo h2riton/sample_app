@@ -12,18 +12,31 @@
     </td>
   </tr>
   <tr>
+    <% if @user.player.nil? %>
+      <%= link_to "Getting Started", new_player_path %>
+    <% else %>
     <td>
-      <% if @user.player.nil? %>
-        <%= link_to "Getting Started", new_player_path %>
-      <% else %>
-        <h1>
-          <%= @user.player.nickname %>
-        </h1>
-        <%= link_to "edit", edit_player_path(@user.player) %>
-        |
-         <%= link_to "delete", @user.player, :method => :delete, :confirm => "You sure?",
+      <h1>
+        <%= @user.player.nickname %>
+      </h1>
+      <%= link_to "Creer un tournoi", root_path %>
+    </td>
+    <td>
+      <%= link_to "edit", edit_player_path(@user.player) %>
+      |
+        <%= link_to "delete", @user.player, :method => :delete, :confirm => "You sure?",
                                 :title => "Delete #{ @user.player.nickname}" %>
-      <% end%>
+    <% end%>
+    </td>
+  </tr>
+  <tr>
+    <td class="main">
+      <% if @user.player && @user.player.tournaments.any?%>
+        <table class="tournaments" summary="Player tournaments">
+          <%= render @tournaments %>
+        </table>
+        <%= will_paginate @tournaments %>
+      <% end %>
     </td>
   </tr>
 </table>

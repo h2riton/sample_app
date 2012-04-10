@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #96FF96;
+  background: #555555;
 }
 
 header {
@@ -193,4 +193,60 @@ ul.users {
 
 .users li {
   list-style: none;
+}
+
+/* tournaments */
+h1.tournament {
+  margin-bottom: 0.3em;
+}
+
+table.tournaments {
+  margin-top: 1em;
+}
+
+table.tournaments tr {
+  height: 30px;
+}
+
+table.tournaments tr td.gravatar {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.tournaments tr td.tournament {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.tournaments tr td.tournament span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.tournaments {
+  font-size: 80%;
+}
+
+form.new_tournament {
+  margin-bottom: 2em;
+}
+
+form.new_tournament textarea {
+  height: 4em;
+  margin-bottom: 0;
 }

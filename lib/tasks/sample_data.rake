@@ -19,5 +19,13 @@ namespace :db do
     User.all(:limit => 15).each do |user|
       user.create_player(:nickname => Faker::Name.first_name)
     end
+    10.times do
+      User.all(:limit => 15).each do |user|
+        if user.player
+          user.player.tournaments.create!(:title => Faker::Name.last_name<<"'s tournament")
+        end
+      end
+    end
+
   end 
 end

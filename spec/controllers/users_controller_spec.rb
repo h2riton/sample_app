@@ -88,10 +88,25 @@ render_views
       response.should have_selector("h1>img", :class => "gravatar")
     end
     
-    it "should show the user's player" do
-      player = Factory(:player, :user => @user)
-      get :show, :id => @user
-      response.should have_selector("h1", :content => @user.player.nickname)
+    describe "for user with player" do
+    
+    before(:each) do
+      @player = Factory(:player, :user => @user)
+    end
+        
+      it "should show the user's player" do
+        get :show, :id => @user
+        response.should have_selector("h1", :content => @user.player.nickname)
+      end
+      
+      it "should show the player's tournaments" do
+        tm1 = Factory(:tournament, :player => @player, :title => "Intercentrales")
+        tm2 = Factory(:tournament, :player => @player, :title => "T5B")
+        get :show, :id => @user
+        response.should have_selector("span.title", :content => tm1.title)
+        response.should have_selector("span.title", :content => tm2.title)
+      end
+      
     end
     
   end

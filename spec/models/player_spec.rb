@@ -50,13 +50,39 @@ describe Player do
       @tm2 = Factory(:tournament, :player => @player, :created_at => 1.hour.ago)
     end
 
-    it "should have a microposts attribute" do
+    it "should have a tournament attribute" do
       @player.should respond_to(:tournaments)
     end
     
-    it "should have the right microposts in the right order" do
+    it "should have the right tournaments in the right order" do
       @player.tournaments.should == [@tm2, @tm1]
     end
+    
+    it "should destroy associated tournaments" do
+      @player.destroy
+      [@tm1, @tm2].each do |tournament|
+        Tournament.find_by_id(tournament.id).should be_nil
+      end
+    end
+    
+    describe "status feed" do
+
+      it "should have a feed" do
+        @player.should respond_to(:feed)
+      end
+
+      it "should include the user's microposts" do
+        @player.feed.include?(@tm1).should be_true
+        @player.feed.include?(@tm2).should be_true
+      end
+
+      it "should not include a different user's microposts" do
+        tm3 = Factory(:tournament,
+                      :player => Factory(:player, :user => Factory(:user, :email => Factory.next(:email))))
+        @player.feed.include?(tm3).should be_false
+      end
+    end
+    
   end
   
 end

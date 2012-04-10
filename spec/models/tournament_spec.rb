@@ -27,4 +27,19 @@ describe Tournament do
       @tournament.player.should == @player
     end
   end
+  
+  describe "validations" do
+
+    it "should require a player id" do
+      Tournament.new(@attr).should_not be_valid
+    end
+
+    it "should require nonblank title" do
+      @player.tournaments.build(:title => "  ").should_not be_valid
+    end
+
+    it "should reject long title" do
+      @player.tournaments.build(:content => "a" * 20).should_not be_valid
+    end
+  end
 end

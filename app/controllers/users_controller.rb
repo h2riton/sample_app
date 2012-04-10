@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    if @user.player
+      @tournaments = @user.player.tournaments.paginate(:page => params[:page])
+    end
     @title = @user.name
   end
   

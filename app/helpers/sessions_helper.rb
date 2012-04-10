@@ -5,6 +5,7 @@ module SessionsHelper
     self.current_user = user
   end
   
+  #Defining assignment to current_user. 
   def current_user=(user)
     @current_user = user
   end
