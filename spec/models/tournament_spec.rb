@@ -39,7 +39,7 @@ describe Tournament do
     end
 
     it "should reject long title" do
-      @player.tournaments.build(:content => "a" * 20).should_not be_valid
+      @player.tournaments.build(:content => "a" * 40).should_not be_valid
     end
   end
 end
